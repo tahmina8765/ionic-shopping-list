@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 // import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { ShoppingItem } from '../../models/shopping-item/shopping-item.interface';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 
 /**
  * Generated class for the AddShoppingPage page.
@@ -11,32 +12,37 @@ import { ShoppingItem } from '../../models/shopping-item/shopping-item.interface
  * Ionic pages and navigation.
  */
 
-// @IonicPage()
+@IonicPage({
+  name: 'my-page',
+  segment: 'some-path'
+})
 @Component({
   selector: 'page-add-shopping',
   templateUrl: 'add-shopping.html',
 })
 export class AddShoppingPage {
 
-  shoppingItem = {} as ShoppingItem;
-  shoppingItmeRef$: AngularFireList<ShoppingItem>;
+  item = {} as ShoppingItem;
+  itemsRef: AngularFireList<ShoppingItem>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database: AngularFireDatabase) {
-    this.shoppingItmeRef$ = this.database.list('shopping-list');
+    this.itemsRef = this.database.list('shopping-list');
     // database.list<ShoppingItem>('shopping-list').valueChanges().subscribe(console.log);
   }
 
-  addShoppingItem(shoppingItem: ShoppingItem){
-    console.log(shoppingItem);
-    this.shoppingItmeRef$.push({
-      itemName: this.shoppingItem.itemName,
-      itemNumber: this.shoppingItem.itemNumber
+  addShoppingItem(item: ShoppingItem){
+    console.log(item);
+    this.itemsRef.push({
+      itemName: this.item.itemName,
+      itemNumber: this.item.itemNumber,
+      itemDate: this.item.itemDate
     });
-    this.shoppingItem = {} as ShoppingItem;
+    this.item = {} as ShoppingItem;
     this.navCtrl.pop();
   }
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad AddShoppingPage');
-  // }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad AddShoppingPage');
+  }
 
 }

@@ -9,6 +9,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { MyApp } from './app.component';
 import { ShoppingListPage } from '../pages/shopping-list/shopping-list';
 import { AddShoppingPage } from '../pages/add-shopping/add-shopping';
+import { EditShoppingPage } from '../pages/edit-shopping/edit-shopping';
 // import { HomePage } from '../pages/home/home';
 import { FIREBASE_CREDENTIALS } from './firebase.credentials';
 
@@ -17,7 +18,8 @@ import { FIREBASE_CREDENTIALS } from './firebase.credentials';
   declarations: [
     MyApp,
     ShoppingListPage,
-    AddShoppingPage
+    AddShoppingPage,
+    EditShoppingPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +32,8 @@ import { FIREBASE_CREDENTIALS } from './firebase.credentials';
   entryComponents: [
     MyApp,
     ShoppingListPage,
-    AddShoppingPage
+    AddShoppingPage,
+    EditShoppingPage
   ],
   providers: [
     StatusBar,

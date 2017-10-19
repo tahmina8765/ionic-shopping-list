@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar color="primary">
-    <ion-title>Add Shopping</ion-title>
+  <ion-navbar>
+    <ion-title>Add Product</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,13 +17,18 @@
   
   <ion-item>
     <ion-label floating>Item Name</ion-label>
-    <ion-input type="text" [(ngModel)]="shoppingItem.itemName"></ion-input>
+    <ion-input type="text" [(ngModel)]="item.itemName"></ion-input>
   </ion-item>
   
   <ion-item>
     <ion-label floating>Item Number</ion-label>
-    <ion-input type="number" [(ngModel)]="shoppingItem.itemNumber"></ion-input>
+    <ion-input type="number" [(ngModel)]="item.itemNumber"></ion-input>
   </ion-item>
 
-  <button ion-button block (click)="addShoppingItem(shoppingItem)">Add Item</button>
+  <ion-item>
+      <ion-label floating>Date</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY" min="2017" max="2020" [(ngModel)]="item.itemDate"></ion-datetime>
+  </ion-item>
+
+  <button ion-button block (click)="addShoppingItem(item)">Add Item</button>
 </ion-content>
